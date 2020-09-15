@@ -57,12 +57,20 @@ public class Searches {
                 .filter(user -> user.getId().equals(id))
                 .map(user -> user.getFractions())
                 .flatMap(fractions -> fractions.stream())
-                .findFirst()
+                .limit(2)
+                .reduce((f1, f2) -> f1.fractionsDivision(f1, f2))
                 .get();
     }
 
     public Double findFirstDecimalFractionByUserName(String name) {
-        return null;
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getName().equals(name))
+                .map(user -> user.getFractions())
+                .flatMap(fractions -> fractions.stream())
+                .filter(fraction -> fraction.getDenominator() != 0)
+                .findFirst()
+                .get()
+                .decimal();
     }
 
     public Stream<String> findUserIdByAllProperFraction() {
@@ -82,7 +90,12 @@ public class Searches {
     }
 
     public Fraction findHighestFraction() {
-        return null;
+        return new UsersDatabase().findAll()
+                .map(user -> user.getFractions())
+                .flatMap(fractions -> fractions.stream())
+                .filter(fraction -> fraction.getDenominator()!=0)
+                .reduce((f1, f2) -> f1.fractionIsHigher(f1, f2))
+                .get();
     }
 
     public Stream<String> findUserNameByAnyImproperFraction() {

@@ -36,7 +36,18 @@ public class SearchesTest {
     @Test
     void findFirstFractionDivisionByUserIdTest(){
         Fraction value = new Searches().findFirstFractionDivisionByUserId("3");
-        assertEquals( 6, value.getNumerator() + value.getDenominator());
+        assertEquals( "-6/15",value.getNumerator()+"/"+value.getDenominator());
+    }
+
+    @Test
+    void findFirstDecimalFractionByUserNameTest(){
+        assertEquals( 2.0, new Searches().findFirstDecimalFractionByUserName("Ana"));
+    }
+
+    @Test
+    void findHighestFractionTest(){
+        Fraction value = new Searches().findHighestFraction();
+        assertEquals( "2/1",value.getNumerator()+"/"+value.getDenominator());
     }
 
 }
