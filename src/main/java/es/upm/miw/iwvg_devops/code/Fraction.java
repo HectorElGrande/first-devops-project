@@ -59,11 +59,22 @@ public class Fraction {
         return numerator < denominator;
     }
 
-    public Fraction fractionsMultiplication(Fraction fraction1, Fraction fraction2){
+    public Fraction fractionsMultiplication(Fraction f1, Fraction f2){
         Fraction fractionResult = new Fraction();
-        fractionResult.setDenominator(fraction1.getDenominator()*fraction2.getDenominator());
-        fractionResult.setNumerator(fraction1.getNumerator()*fraction2.getNumerator());
+        fractionResult.setDenominator(f1.getDenominator()*f2.getDenominator());
+        fractionResult.setNumerator(f1.getNumerator()*f2.getNumerator());
         return fractionResult;
+    }
+
+    public Fraction fractionsDivision(Fraction f1, Fraction f2){
+        Fraction fractionResult = new Fraction();
+        fractionResult.setDenominator(f1.getDenominator()*f2.getNumerator());
+        fractionResult.setNumerator(f1.getNumerator()*f2.getDenominator());
+        return fractionResult;
+    }
+
+    public Fraction fractionIsHigher(Fraction f1, Fraction f2){
+        return (f1.decimal() > f2.decimal())?f1:f2;
     }
 
     public double decimal() {
