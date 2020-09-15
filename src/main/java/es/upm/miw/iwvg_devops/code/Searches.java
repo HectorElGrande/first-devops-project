@@ -74,11 +74,19 @@ public class Searches {
     }
 
     public Stream<String> findUserIdByAllProperFraction() {
-        return Stream.empty();
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                .allMatch(fraction -> fraction.isProperFraction(fraction.getNumerator(), fraction.getDenominator())))
+                .map(user -> user.getId());
     }
 
     public Stream<Double> findDecimalImproperFractionByUserName(String name) {
-        return Stream.empty();
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getName().equals(name))
+                .map(user -> user.getFractions())
+                .flatMap(fractions -> fractions.stream())
+                .filter(fraction -> !fraction.isProperFraction(fraction.getNumerator(), fraction.getDenominator()))
+                .map(fraction -> fraction.decimal());
     }
 
     public Fraction findFirstProperFractionByUserId(String id) {

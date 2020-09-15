@@ -45,6 +45,16 @@ public class SearchesTest {
     }
 
     @Test
+    void findUserIdByAllProperFractionTest(){
+        assertEquals( "4", new Searches().findUserIdByAllProperFraction().findFirst().get());
+    }
+
+    @Test
+    void findDecimalImproperFractionByUserNameTest(){
+        assertEquals( 2.0, new Searches().findDecimalImproperFractionByUserName("Ana").findFirst().get());
+    }
+
+    @Test
     void findHighestFractionTest(){
         Fraction value = new Searches().findHighestFraction();
         assertEquals( "2/1",value.getNumerator()+"/"+value.getDenominator());

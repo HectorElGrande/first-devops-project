@@ -26,8 +26,8 @@ public class UsersDatabase {
                 new Fraction(4, 4)
         );
         List<Fraction> fractions4 = List.of(
-                new Fraction(2, 2),
-                new Fraction(4, 4)
+                new Fraction(1, 2),
+                new Fraction(2, 4)
         );
         List<Fraction> fractions5 = List.of(
                 new Fraction(0, 1),
