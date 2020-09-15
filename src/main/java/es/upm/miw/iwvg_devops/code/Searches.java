@@ -90,7 +90,13 @@ public class Searches {
     }
 
     public Fraction findFirstProperFractionByUserId(String id) {
-        return null;
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getId().equals(id))
+                .map(user -> user.getFractions())
+                .flatMap(fractions -> fractions.stream())
+                .filter(fraction -> fraction.isProperFraction(fraction.getNumerator(), fraction.getDenominator()))
+                .findFirst()
+                .get();
     }
 
     public Stream<String> findUserFamilyNameByImproperFraction() {

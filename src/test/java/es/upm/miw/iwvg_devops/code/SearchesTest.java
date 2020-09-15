@@ -46,7 +46,7 @@ public class SearchesTest {
 
     @Test
     void findUserIdByAllProperFractionTest(){
-        assertEquals( "4", new Searches().findUserIdByAllProperFraction().findFirst().get());
+        assertEquals( 0, new Searches().findUserIdByAllProperFraction().count());
     }
 
     @Test
