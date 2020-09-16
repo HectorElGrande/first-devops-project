@@ -100,7 +100,6 @@ public class Searches {
     }
 
     public Stream<String> findUserFamilyNameByImproperFraction() {
-
         return Stream.empty();
     }
 
