@@ -1,0 +1,17 @@
+language: java
+#jdk: openjdk14 #problems with sonar-maven-plugin
+branches:
+  only:
+    - develop
+    - "/^release-[0-999].[0-999]$/"
+    - master
+notifications:
+  slack:
+    secure:
+  email:
+    recipients:
+      - hector.mumerida@alumnos.upm.es
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=hectorelgrande-1 -Dsonar.login=$SONAR
