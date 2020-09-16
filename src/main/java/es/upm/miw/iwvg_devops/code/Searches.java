@@ -113,11 +113,17 @@ public class Searches {
     }
 
     public Stream<String> findUserNameByAnyImproperFraction() {
-        return Stream.empty();
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                .anyMatch(fraction -> fraction.isImproperFraction(fraction.getNumerator(), fraction.getDenominator())))
+                .map(User::getName);
     }
 
     public Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
-        return Stream.empty();
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream().distinct()
+                .allMatch(fraction -> fraction.decimal() < 0.0))
+                .map(User::getFamilyName);
     }
 
     public Stream<Double> findDecimalFractionByUserName(String name) {

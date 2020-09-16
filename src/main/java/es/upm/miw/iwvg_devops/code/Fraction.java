@@ -59,6 +59,10 @@ public class Fraction {
         return numerator < denominator;
     }
 
+    public boolean isImproperFraction(int numerator, int denominator){
+        return numerator > denominator;
+    }
+
     public Fraction fractionsMultiplication(Fraction f1, Fraction f2){
         Fraction fractionResult = new Fraction();
         fractionResult.setDenominator(f1.getDenominator()*f2.getDenominator());

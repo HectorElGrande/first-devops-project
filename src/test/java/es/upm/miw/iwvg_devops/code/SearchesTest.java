@@ -60,4 +60,14 @@ public class SearchesTest {
         assertEquals( "2/1",value.getNumerator()+"/"+value.getDenominator());
     }
 
+    @Test
+    void findUserNameByAnyImproperFractionTest(){
+        assertEquals(5, new Searches().findUserNameByAnyImproperFraction().count());
+    }
+
+    @Test
+    void findUserFamilyNameByAllNegativeSignFractionDistinctTest(){
+        assertEquals(0, new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct().count());
+    }
+
 }
